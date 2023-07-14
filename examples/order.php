@@ -10,8 +10,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use Xmo\Api\SupplyClient;
 
-$appKey = "123stbz456";
-$appSecret = "WywhCb6iYyshGBO0caWn3GLSeKloOnsn";
+$appKey = "B5EB05025DFBA47329BAD796A92B2812195551660619929";
+$appSecret = "C90FDADB1599C376627EC7E03640B683";
 
 $param =[
 	'address'=>[
@@ -32,13 +32,13 @@ $param =[
 	],
 ];
 
-$supplyClient = new SupplyClient($param);
+$supplyClient = new SupplyClient([]);
 $supplyClient->setAppKey($appKey);
 $supplyClient->setAppSecret($appSecret);
 
 
 //可售检测
-$response = $supplyClient->order->serApi("/v2/order/availableCheck")->get();
+//$response = $supplyClient->order->serApi("/v2/order/availableCheck")->get();
 //前置校验
 //$response = $supplyClient->order->setApi("post","/v2/order/beforeCheck")->get();
 
@@ -83,7 +83,7 @@ $response = $supplyClient->order->serApi("/v2/order/availableCheck")->get();
 //订单详情
 //$param = [];
 //$sn ="20191115204845294762_6_1_1";//三级订单号
-//$response = $supplyClient->order->setApi("/v2/order".$sn)->get();
+//$response = $supplyClient->order->setApi("/v2/order/".$sn)->get();
 
 //物流查询
 //$param = [

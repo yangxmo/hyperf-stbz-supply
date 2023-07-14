@@ -1,49 +1,73 @@
+# 聚合供应链平台SDK
+## 更新时间: 2023-07-13 15:00:21
+## Installing
 
-## supply-php-sdk
-
-supply-php-sdk是北京胜天半子有限公司官方SDK的Composer封装，支持php项目的供应链API对接，整合了京东API、1688API、淘宝天猫API等上游渠道。
-## 安装
-
-* 通过composer，这是推荐的方式，可以使用composer.json 声明依赖，或者运行下面的命令。
-```bash
-$ composer require stbz-supply/php-sdk
+```shell
+$ composer require yangxmo/hyperf-stbz-supply -vvv
 ```
-* 直接下载安装，SDK 没有依赖其他第三方库，但需要参照 composer的autoloader，增加一个自己的autoloader程序。
 
-## 运行环境
+## Usage
 
-    php: >=7.0
+```php
+        $obj = new \Xmo\Api\SupplyClient(['page'=>1]);
+        $obj->setAppkey('你的appkey');
+        $obj->setAppsecret('你的秘钥');
+        $obj->setAccessToken('自己想办法去获取token，如果设置的是多用户单用户的直接复制，应用管理中的token');//如果是单用户模式,无需添加此参数
+        $res =$obj->order->setApi('文档中的API地址')->get(); //api 就是聚合文档中的
+        var_dump($res);
+```
 
-## 使用方法
+项目中可以继承他：
 
-```php    
-    use Xmo\Api\SupplyClient;
-    //appkey、appSecret 在开放平台获取 https://open.jxhh.com
-    $appKey = "your appkey"; 
-    $appSecret = "your appSecret";
-    
-    try {
-    	$supplyClient = new SupplyClient($appKey,$appSecret);
-    } catch (OssException $e) {
-    	printf(__FUNCTION__ . "creating supplyClient instance: FAILED\n");
-    	printf($e->getMessage() . "\n");
-    	return null;
+````php
+<?php
+
+
+namespace App\Services\ApiOpen;
+
+
+class AliOpen extends \Xmo\Api\SupplyClient
+{
+    public function __construct($params = array())
+    {
+        $this->setAppkey('39376**');
+        $this->setAppsecret('0RsvFZYV**');
+        $this->access_token = '06410386-242c-41f6-8a20-5e7e0d2b6229';
+        parent::__construct($params);
     }
+}
+
+````
+
+获取商品列表的例子
+```php
+        $get_data =( new  \Xmo\Api\SupplyClient([
+            'page'=>1,
+            'limit'=>100,
+        ]))
+            ->order
+            ->setApi('/v2/Goods/Lists')
+            ->get();
+```
+获取订单详情的例子
+```php
+        $orderSn = '20191115204845294762_6_1_1';
     
-    //获取商品列表
-    $param = ['page'=>1, 'limit'=>20, 'source'=>2];//请求参数
-    $method = 'get';//请求方法
-    $action = 'v2/Goods/Lists';//请求资源名
-    $response = $supplyClient->getApiResponse($method,$action,$param);
-```    
+        $get_data = (new \Xmo\Aapi\SupplyClient([]))
+            ->order
+            ->setApi("/v2/order/".$orderSn)
+            ->get();
 
-##供应链平台
+```
 
-官网网址 https://www.stbz.net/ 
+更新日志：
 
-开放平台地址 https://open.jxhh.com/  
+1.修复php8下，因为强类型返回参数报错问题
+2.增加hyperf 协程 Guzzle client 客户端
+3.修复部分bug
+4.重新设计sdk架构
+5.处理替换curl
 
-选品平台地址 https://scm.jxhh.com/   
+## License
 
-
-
+MIT
