@@ -15,6 +15,10 @@
     "monolog/monolog": "^1.25.1",
     "symfony/dotenv": "^v4.4.7"
   },
+  "providers": [
+    "Xmo\\Api\\Provider\\ProductProvider",
+    "Xmo\\Api\\Provider\\StoreProvider"
+  ],
   "license": "MIT",
   "authors": [
     {
