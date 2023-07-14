@@ -22,7 +22,7 @@ class Guzzle
     {
         !empty($options['headers']) && $options['headers'] = array_merge($options['headers'], $this->headers);
 
-        // $options['handler'] = HandlerStack::create(new CoroutineHandler());
+         $options['handler'] = HandlerStack::create(new CoroutineHandler());
 
         $this->client = \Hyperf\Support\make(Client::class, [$options]);
 
@@ -44,7 +44,6 @@ class Guzzle
      */
     public function sendPost(string $url, array $params, array $headers = []): array
     {
-        var_dump(Json::encode($params));
         $result = $this->client->post($url, ['body' => Json::encode($params)]);
 
         return $this->getResult($result);
