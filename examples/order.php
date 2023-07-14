@@ -10,8 +10,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use Xmo\Api\SupplyClient;
 
-$appKey = "B5EB05025DFBA47329BAD796A92B2812195551660619929";
-$appSecret = "C90FDADB1599C376627EC7E03640B683";
+$appKey = "333";
+$appSecret = "4555";
 
 $param =[
 	'address'=>[
