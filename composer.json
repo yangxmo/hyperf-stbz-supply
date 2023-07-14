@@ -1,5 +1,5 @@
 {
-  "name": "yangxmo/stbz-supply",
+  "name": "yangxmo/hyperf-stbz-supply",
   "description": "STBZ supply API SDK for PHP",
   "type": "library",
   "keywords": ["supply", "stbz", "sdk", "hyperf"],
