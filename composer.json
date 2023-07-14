@@ -1,0 +1,24 @@
+{
+  "name": "yangxmo/stbz-supply",
+  "description": "STBZ supply API SDK for PHP",
+  "type": "library",
+  "keywords": ["supply", "stbz", "sdk", "hyperf"],
+  "require": {
+    "php": ">=8.0",
+    "hyperf/framework": "~3.0.0",
+    "hyperf/guzzle": "~3.0.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "since",
+      "email": "529393997@qq.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "Xmo\\Api\\": "src/"
+    }
+  }
+}
