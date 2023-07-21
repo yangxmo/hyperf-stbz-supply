@@ -12,7 +12,6 @@ $ composer require yangxmo/hyperf-stbz-supply -vvv
         $obj = new \Xmo\Api\SupplyClient(['page'=>1]);
         $obj->setAppkey('你的appkey');
         $obj->setAppsecret('你的秘钥');
-        $obj->setAccessToken('自己想办法去获取token，如果设置的是多用户单用户的直接复制，应用管理中的token');//如果是单用户模式,无需添加此参数
         $res =$obj->order->setApi('文档中的API地址')->get(); //api 就是聚合文档中的
         var_dump($res);
 ```
@@ -32,7 +31,6 @@ class AliOpen extends \Xmo\Api\SupplyClient
     {
         $this->setAppkey('39376**');
         $this->setAppsecret('0RsvFZYV**');
-        $this->access_token = '06410386-242c-41f6-8a20-5e7e0d2b6229';
         parent::__construct($params);
     }
 }
